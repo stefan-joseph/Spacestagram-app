@@ -88,11 +88,16 @@ export default class Feed extends Component {
   }
 
   componentDidMount() {
-    const likes = JSON.parse(localStorage.getItem("likes"));
-    const comments = JSON.parse(localStorage.getItem("comments"));
-    const startDate = localStorage.getItem("startDate");
-    const endDate = localStorage.getItem("endDate");
-    const dateHeader = localStorage.getItem("dateHeader");
+    let likes = JSON.parse(localStorage.getItem("likes"));
+    if (likes === null) likes = this.state.likes;
+    let comments = JSON.parse(localStorage.getItem("comments"));
+    if (comments === null) comments = this.state.comments;
+    let startDate = localStorage.getItem("startDate");
+    if (startDate === null) startDate = this.state.startDate;
+    let endDate = localStorage.getItem("endDate");
+    if (endDate === null) endDate = this.state.endDate;
+    let dateHeader = localStorage.getItem("dateHeader");
+    if (dateHeader === null) dateHeader = this.state.dateHeader;
     this.setState({ likes, comments, startDate, endDate, dateHeader });
     this.getData();
   }
@@ -109,8 +114,7 @@ export default class Feed extends Component {
   };
 
   verifyLike = (item) => {
-    const likes = [...this.state.likes];
-    const liked = likes.find((like) => like.url === item.url);
+    const liked = this.state.likes.find((like) => like.url === item.url);
     if (liked) return true;
     return false;
   };
