@@ -109,11 +109,10 @@ export default class Feed extends Component {
   };
 
   verifyLike = (item) => {
-    if (this.state.likes.length > 0) {
-      const liked = this.state.likes.find((like) => like.url === item.url);
-      if (liked) return true;
-      return false;
-    }
+    const likes = [...this.state.likes];
+    const liked = likes.find((like) => like.url === item.url);
+    if (liked) return true;
+    return false;
   };
 
   handlePostComment = (url, comment) => {
@@ -163,16 +162,9 @@ export default class Feed extends Component {
   };
 
   handleMonthSelection = (dateRange) => {
-    console.log(dateRange);
-
     const startDate = moment(dateRange[0]).format("YYYY-MM-DD");
-    console.log(startDate);
-
     const endDate = moment(dateRange[1]).format("YYYY-MM-DD");
-    console.log(endDate);
-
     const dateHeader = moment(dateRange[0]).format("MMMM YYYY");
-    console.log(dateHeader);
 
     this.setState({ startDate, endDate, dateHeader });
     localStorage.setItem("startDate", startDate);
@@ -181,7 +173,6 @@ export default class Feed extends Component {
   };
 
   handleMonthChange = (instruction) => {
-    console.log(instruction);
     let startDate = null;
     let endDate = null;
     if (instruction === "nextMonth") {
