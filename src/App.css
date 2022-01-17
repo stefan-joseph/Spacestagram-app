@@ -1,38 +1,343 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&family=Share+Tech+Mono&display=swap");
+
+#root {
+  height: 100vh;
+  --border: 1px solid rgb(192, 192, 192);
+  --darkgrey: rgb(131, 131, 131);
+}
+
 .App {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 500px;
+  /* background: rgb(248, 248, 248); */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a {
+  all: unset;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+input {
+  all: unset;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.to-bottom {
+  height: 100vh;
+}
+
+/* header toolbar */
+.header-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  background: #fff;
+  height: 65px;
+  border-bottom: var(--border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.spacestagram-logo {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+}
+.spacestagram-logo img {
+  width: 40px;
+  border-radius: 12px;
+  position: absolute;
+}
+
+.planet {
+  position: absolute;
+  font-size: 31px;
+  color: #fff;
+  top: 5px;
+  left: 5px;
+}
+
+.title {
+  font-family: "Share Tech Mono", monospace;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.title-cursive {
+  font-family: "Dancing Script", cursive;
+  font-size: 30px;
+  padding-left: 1px;
+}
+
+.header-feed-icons {
+  margin-left: auto;
+  font-size: 28px;
+  margin: 0px 7px;
+}
+
+.header-feed-icons span {
+  margin: 0px 10px;
+  cursor: pointer;
+}
+
+/* feed */
+
+.feed {
+  /* background-image: url("https://cdn.mos.cms.futurecdn.net/HuGGeENt6kGyixe3hT9tnY-1024-80.jpg.webp"); */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-top: 30px;
+  position: relative;
+  z-index: 1;
+
+  /* background: rgb(248, 248, 248); */
+
+  /* opacity: 0.2; */
 }
 
-.App-link {
-  color: #61dafb;
+.feed::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: url("https://cdn.mos.cms.futurecdn.net/HuGGeENt6kGyixe3hT9tnY-1024-80.jpg.webp");
+  opacity: 0.2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.feed-header {
+  width: 500px;
+  border: var(--border);
+  border-radius: 2.5px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+}
+
+.calendar-button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.calendar-arrows {
+  cursor: pointer;
+}
+.calendar-arrows-inactive {
+  color: rgb(192, 192, 192);
+}
+
+.no-likes {
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* feed item */
+.feed-item {
+  width: 500px;
+  border: var(--border);
+  border-radius: 2.5px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+.feed-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  border-bottom: var(--border);
+}
+
+.avatar {
+  object-fit: cover;
+  border: var(--border);
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  position: relative;
+  overflow: hidden;
+  margin: 0px 10px;
+}
+
+.avatar img {
+  object-fit: cover;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  transform: scale(1.28);
+  left: 1px;
+}
+
+.link-hover:hover {
+  text-decoration: underline;
+}
+
+.feed-item img {
+  width: inherit;
+}
+
+.feed-item iframe {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.feed-item-text {
+  border-top: var(--border);
+  padding: 20px;
+  word-break: break-word;
+}
+
+.feed-item-toolbar {
+  display: flex;
+}
+
+.feed-item-toolbar span {
+  font-size: 22px;
+  margin-right: 18px;
+  position: relative;
+  cursor: pointer;
+}
+
+.feed-item-toolbar span:hover {
+  color: var(--darkgrey);
+}
+
+.heart-liked,
+.heart-liked:hover {
+  color: rgba(212, 32, 32, 0.877);
+  animation: like 0.7s 1 ease-in-out;
+}
+
+@keyframes like {
+  50% {
+    transform: scale(1.2);
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+    transform: scale(1);
+  }
+}
+
+.heart-unliked {
+  animation: unlike 0.5s 1 ease-in-out;
+}
+
+@keyframes unlike {
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.share-toolbar > * {
+  margin: 0px 5px;
+}
+
+.like-text {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  margin-left: auto;
+}
+
+.feed-item-explanation span {
+  color: var(--darkgrey);
+}
+
+.feed-item-explanation span:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.feed-item-comment-container {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+
+.feed-item-comment {
+  margin: 3px;
+}
+
+.comment-user {
+  font-weight: 700;
+  margin-right: 7px;
+}
+
+.delete-comment {
+  color: #fff;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.feed-item-comment-container:hover .delete-comment {
+  color: var(--darkgrey);
+}
+
+.feed-item-date {
+  font-size: 15px;
+  font-weight: 600;
+  color: black;
+}
+
+.feed-item-comment-input {
+  display: flex;
+  border-top: var(--border);
+  width: 500px;
+}
+
+.feed-item-comment-input input {
+  margin-right: auto;
+  padding-left: 20px;
+}
+
+.post-active {
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.post-inactive {
+  padding-right: 20px;
+  color: var(--darkgrey);
+  cursor: default;
+}
+
+/* Loading */
+
+.loading {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.rocket-loading {
+  font-size: 50px;
+  padding-left: 10px;
+  animation: liftOff 0.1s infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes liftOff {
+  100% {
+    transform: translateY(-2px);
   }
 }
