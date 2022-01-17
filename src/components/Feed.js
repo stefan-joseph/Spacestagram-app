@@ -109,9 +109,11 @@ export default class Feed extends Component {
   };
 
   verifyLike = (item) => {
-    const liked = this.state.likes.find((like) => like.url === item.url);
-    if (liked) return true;
-    return false;
+    if (this.state.likes.length > 0) {
+      const liked = this.state.likes.find((like) => like.url === item.url);
+      if (liked) return true;
+      return false;
+    }
   };
 
   handlePostComment = (url, comment) => {
