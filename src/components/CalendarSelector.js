@@ -25,7 +25,6 @@ export default function CalendarSelector({ onMonthSelection, dateHeader }) {
             }}
             defaultView="year"
             maxDetail="year"
-            defaultView="year"
             minDetail="decade"
             returnValue="range"
             maxDate={new Date()}

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import "react-calendar/dist/Calendar.css";
-import { Tooltip } from "react-tippy";
 import "react-tippy/dist/tippy.css";
 import DateArrows from "./DateArrows";
 import CalendarSelector from "./CalendarSelector";

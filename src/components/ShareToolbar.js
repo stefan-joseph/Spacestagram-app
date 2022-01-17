@@ -3,8 +3,6 @@ import { Tooltip } from "react-tippy";
 import "react-tippy/dist/tippy.css";
 import { FiShare as Share } from "react-icons/fi";
 import {
-  EmailShareButton,
-  EmailIcon,
   FacebookShareButton,
   FacebookIcon,
   TwitterShareButton,

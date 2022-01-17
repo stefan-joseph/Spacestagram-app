@@ -27,7 +27,7 @@ function FeedItem(props) {
       <div className="feed-item-header">
         <a href="https://api.nasa.gov/">
           <div className="avatar">
-            <img src={Logo} />
+            <img src={Logo} alt="" />
           </div>
         </a>
         <a href="https://api.nasa.gov/" className="link-hover">
